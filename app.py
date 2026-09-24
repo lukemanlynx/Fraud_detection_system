@@ -27,7 +27,7 @@ class FraudDetectionApp:
 
         self.root.geometry("1000x760")
         self.root.minsize(950,700)
-        self.root.configure(bg="#ECEFF4")
+        self.root.configure(bg="white")
 
         self.history = []
 
@@ -65,7 +65,16 @@ class FraudDetectionApp:
 
         self.style.configure(
             "TLabel",
-            font=("Segoe UI",10)
+            font=("Segoe UI",11),
+            background="white",
+            foreground="#1F2937"
+        )
+
+        self.style.configure(
+            "Field.TLabel",
+            font=("Segoe UI",11,"bold"),
+            background="white",
+            foreground="#1F2937"
         )
 
         self.style.configure(
@@ -77,6 +86,13 @@ class FraudDetectionApp:
         self.style.configure(
             "Predict.TButton",
             font=("Segoe UI",11,"bold")
+        )
+
+        self.style.configure(
+            "TRadiobutton",
+            font=("Segoe UI",10),
+            background="white",
+            foreground="#374151"
         )
 
     ##########################################################
@@ -113,7 +129,7 @@ class FraudDetectionApp:
 
         main = tk.Frame(
             self.root,
-            bg="#ECEFF4"
+            bg="white"
         )
 
         main.pack(fill="both",expand=True,padx=20,pady=20)
@@ -138,7 +154,7 @@ class FraudDetectionApp:
 
         #################################################
 
-        ttk.Label(left,text="Amount").grid(
+        ttk.Label(left,text="Amount",style="Field.TLabel").grid(
             row=1,
             column=0,
             sticky="w",
@@ -151,7 +167,7 @@ class FraudDetectionApp:
 
         #################################################
 
-        ttk.Label(left,text="Hour (0-23)").grid(
+        ttk.Label(left,text="Hour (0-23)",style="Field.TLabel").grid(
             row=2,
             column=0,
             sticky="w",
@@ -164,7 +180,7 @@ class FraudDetectionApp:
 
         #################################################
 
-        ttk.Label(left,text="Previous Transactions").grid(
+        ttk.Label(left,text="Previous Transactions",style="Field.TLabel").grid(
             row=3,
             column=0,
             sticky="w",
@@ -177,7 +193,7 @@ class FraudDetectionApp:
 
         #################################################
 
-        ttk.Label(left,text="International").grid(
+        ttk.Label(left,text="International",style="Field.TLabel").grid(
             row=4,
             column=0,
             sticky="w",
@@ -202,7 +218,7 @@ class FraudDetectionApp:
 
         #################################################
 
-        ttk.Label(left,text="New Device").grid(
+        ttk.Label(left,text="New Device",style="Field.TLabel").grid(
             row=5,
             column=0,
             sticky="w",
@@ -227,7 +243,7 @@ class FraudDetectionApp:
 
         #################################################
 
-        ttk.Label(left,text="High Risk Country").grid(
+        ttk.Label(left,text="High Risk Country",style="Field.TLabel").grid(
             row=6,
             column=0,
             sticky="w",
@@ -323,7 +339,8 @@ class FraudDetectionApp:
 
         ttk.Label(
             right,
-            text="Confidence"
+            text="Confidence",
+            style="Field.TLabel"
         ).pack(anchor="w")
 
         self.confidence = tk.Label(
@@ -337,7 +354,8 @@ class FraudDetectionApp:
 
         ttk.Label(
             right,
-            text="Risk Score"
+            text="Risk Score",
+            style="Field.TLabel"
         ).pack(anchor="w",pady=(20,5))
 
         self.progress = ttk.Progressbar(
@@ -638,3 +656,4 @@ class FraudDetectionApp:
 if __name__ == "__main__":
     app = FraudDetectionApp()
     app.root.mainloop()
+
